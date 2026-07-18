@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F24D24CE-3A74-4E69-9A87-7EA15ABA41DB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>YoloNexus</ProjectName>
+    <RootNamespace>YoloNexus</RootNamespace>
+    <VcpkgEnabled>false</VcpkgEnabled>
+    <YoloVcpkgInstalledDir>$([System.IO.Path]::GetFullPath('$(ProjectDir)vcpkg_installed\'))</YoloVcpkgInstalledDir>
+    <VcpkgTriplet>x64-windows</VcpkgTriplet>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <VcpkgConfiguration>Debug</VcpkgConfiguration>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <VcpkgConfiguration>Release</VcpkgConfiguration>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+
+  <PropertyGroup>
+    <OutDir>$(ProjectDir)out\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)out\obj\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>YoloNexusCpp</TargetName>
+    <LocalDebuggerWorkingDirectory>$(OutDir)</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerCommand>$(TargetPath)</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <VcpkgRuntimeDir>$(YoloVcpkgInstalledDir)$(VcpkgTriplet)\debug\bin</VcpkgRuntimeDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'!='Debug'">
+    <VcpkgRuntimeDir>$(YoloVcpkgInstalledDir)$(VcpkgTriplet)\bin</VcpkgRuntimeDir>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4864;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;ORT_API_MANUAL_INIT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(ProjectDir)src\app;$(YoloVcpkgInstalledDir)$(VcpkgTriplet)\include;$(YoloVcpkgInstalledDir)$(VcpkgTriplet)\include\opencv4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(YoloVcpkgInstalledDir)$(VcpkgTriplet)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;d3dcompiler.lib;gdi32.lib;user32.lib;ole32.lib;strmiids.lib;winmm.lib;pdh.lib;psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(VcpkgRuntimeDir)\*.dll" "$(TargetDir)" &gt;nul
+if not exist "$(TargetDir)runtimes\directml" mkdir "$(TargetDir)runtimes\directml"
+copy /Y "$(VcpkgRuntimeDir)\onnxruntime.dll" "$(TargetDir)runtimes\directml\onnxruntime.dll" &gt;nul
+copy /Y "$(VcpkgRuntimeDir)\onnxruntime_providers_shared.dll" "$(TargetDir)runtimes\directml\onnxruntime_providers_shared.dll" &gt;nul
+copy /Y "$(VcpkgRuntimeDir)\DirectML.dll" "$(TargetDir)runtimes\directml\DirectML.dll" &gt;nul
+copy /Y "$(ProjectDir)config.txt" "$(TargetDir)config.txt" &gt;nul
+copy /Y "$(ProjectDir)best4k.onnx" "$(TargetDir)best4k.onnx" &gt;nul</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(YoloVcpkgInstalledDir)$(VcpkgTriplet)\debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_core4d.lib;opencv_imgproc4d.lib;opencv_dnn4d.lib;opencv_videoio4d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opencv_core4.lib;opencv_imgproc4.lib;opencv_dnn4.lib;opencv_videoio4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <ClCompile Include="src\app\console_app.cpp" />
+    <ClCompile Include="src\app\console_dashboard.cpp" />
+    <ClCompile Include="src\app\main.cpp" />
+    <ClCompile Include="src\application\app_settings.cpp" />
+    <ClCompile Include="src\application\config_file.cpp" />
+    <ClCompile Include="src\application\runtime_controller.cpp" />
+    <ClCompile Include="src\core\capture\camera_capture.cpp" />
+    <ClCompile Include="src\core\capture\screen_capture.cpp" />
+    <ClCompile Include="src\core\capture\source_catalog.cpp" />
+    <ClCompile Include="src\core\capture\window_capture.cpp" />
+    <ClCompile Include="src\core\display\d3d_display.cpp" />
+    <ClCompile Include="src\core\display\preview_window.cpp" />
+    <ClCompile Include="src\core\hardware\cpu_monitor.cpp" />
+    <ClCompile Include="src\core\hardware\gpu_monitor.cpp" />
+    <ClCompile Include="src\core\hardware\memory_monitor.cpp" />
+    <ClCompile Include="src\core\hardware\system_info.cpp" />
+    <ClCompile Include="src\core\inference\amd_neural_runner.cpp" />
+    <ClCompile Include="src\core\inference\class_metadata.cpp" />
+    <ClCompile Include="src\core\inference\input_preprocessing.cpp" />
+    <ClCompile Include="src\core\inference\onnxruntime_loader.cpp" />
+    <ClCompile Include="src\core\inference\yolo_inference.cpp" />
+    <ClCompile Include="src\core\overlay\overlay.cpp" />
+    <ClCompile Include="src\core\pipeline\fps_statistics.cpp" />
+    <ClCompile Include="src\core\pipeline\workers.cpp" />
+    <ClCompile Include="src\core\platform\utf8.cpp" />
+    <ClCompile Include="src\core\timing.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\app\console_app.h" />
+    <ClInclude Include="src\app\console_dashboard.h" />
+    <ClInclude Include="src\application\app_settings.h" />
+    <ClInclude Include="src\application\config_file.h" />
+    <ClInclude Include="src\application\runtime_controller.h" />
+    <ClInclude Include="src\application\runtime_snapshot.h" />
+    <ClInclude Include="src\core\capture\camera_capture.h" />
+    <ClInclude Include="src\core\capture\capture_source.h" />
+    <ClInclude Include="src\core\capture\screen_capture.h" />
+    <ClInclude Include="src\core\capture\source_catalog.h" />
+    <ClInclude Include="src\core\capture\window_capture.h" />
+    <ClInclude Include="src\core\display\d3d_display.h" />
+    <ClInclude Include="src\core\display\preview_window.h" />
+    <ClInclude Include="src\core\ema.h" />
+    <ClInclude Include="src\core\hardware\cpu_monitor.h" />
+    <ClInclude Include="src\core\hardware\gpu_monitor.h" />
+    <ClInclude Include="src\core\hardware\memory_monitor.h" />
+    <ClInclude Include="src\core\hardware\system_info.h" />
+    <ClInclude Include="src\core\inference\amd_neural_runner.h" />
+    <ClInclude Include="src\core\inference\class_metadata.h" />
+    <ClInclude Include="src\core\inference\input_preprocessing.h" />
+    <ClInclude Include="src\core\inference\onnxruntime_loader.h" />
+    <ClInclude Include="src\core\inference\yolo_inference.h" />
+    <ClInclude Include="src\core\overlay\overlay.h" />
+    <ClInclude Include="src\core\pipeline\fps_statistics.h" />
+    <ClInclude Include="src\core\pipeline\pipeline_state.h" />
+    <ClInclude Include="src\core\pipeline\workers.h" />
+    <ClInclude Include="src\core\platform\utf8.h" />
+    <ClInclude Include="src\core\timing.h" />
+    <ClInclude Include="src\core\types.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include="best4k.onnx" />
+    <None Include="CMakeLists.txt" />
+    <None Include="CMakePresets.json" />
+    <None Include="config.txt" />
+    <None Include="vcpkg.json" />
+    <None Include="vcpkg-configuration.json" />
+    <None Include="ports\onnxruntime-directml\portfile.cmake" />
+    <None Include="ports\onnxruntime-directml\vcpkg.json" />
+    <None Include="tests\config_tests.cpp" />
+    <None Include="tests\fps_statistics_tests.cpp" />
+    <None Include="tests\inference_benchmark.cpp" />
+    <None Include="tests\input_preprocessing_tests.cpp" />
+    <None Include="tests\onnxruntime_loader_tests.cpp" />
+    <None Include="tests\source_catalog_tests.cpp" />
+  </ItemGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Target Name="CheckProjectDependencies" BeforeTargets="ClCompile">
+    <Error
+      Condition="!Exists('$(YoloVcpkgInstalledDir)$(VcpkgTriplet)\include\opencv4')"
+      Text="Dependencies are missing. Run 'vcpkg install --triplet x64-windows --x-wait-for-lock' from the project directory." />
+  </Target>
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

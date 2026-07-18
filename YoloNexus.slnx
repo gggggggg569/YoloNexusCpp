@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="YoloNexus.vcxproj"
+           Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942"
+           Id="f24d24ce-3a74-4e69-9a87-7ea15aba41db"
+           DefaultStartup="true" />
+</Solution>

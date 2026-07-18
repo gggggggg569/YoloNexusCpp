@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src"><UniqueIdentifier>{A6A5A64E-EE0D-42CC-AF82-E3DF47F75D01}</UniqueIdentifier></Filter>
+    <Filter Include="src\app"><UniqueIdentifier>{8A10B887-4201-46B4-A56A-42875946A102}</UniqueIdentifier></Filter>
+    <Filter Include="src\application"><UniqueIdentifier>{CB616E99-32D0-4034-93AA-6B155F26E103}</UniqueIdentifier></Filter>
+    <Filter Include="src\core"><UniqueIdentifier>{3D8B71E2-09B2-4795-A14D-00C8B0F6B104}</UniqueIdentifier></Filter>
+    <Filter Include="src\core\capture"><UniqueIdentifier>{1B6922BD-C5C1-4F88-A4EC-71EA9B679105}</UniqueIdentifier></Filter>
+    <Filter Include="src\core\display"><UniqueIdentifier>{0B753B7F-0AE6-4326-B40F-A5F8D65DA106}</UniqueIdentifier></Filter>
+    <Filter Include="src\core\hardware"><UniqueIdentifier>{D4451986-5589-47DD-9127-A30D498F1107}</UniqueIdentifier></Filter>
+    <Filter Include="src\core\inference"><UniqueIdentifier>{90B2A3FB-BDAB-49D6-BF27-5FD332C20108}</UniqueIdentifier></Filter>
+    <Filter Include="src\core\overlay"><UniqueIdentifier>{7F77CE19-69E1-4B42-A101-A83D87B73109}</UniqueIdentifier></Filter>
+    <Filter Include="src\core\pipeline"><UniqueIdentifier>{8619AC83-B74C-45B8-B5DC-A89F46B14110}</UniqueIdentifier></Filter>
+    <Filter Include="src\core\platform"><UniqueIdentifier>{9B18ED81-8473-499D-89D1-5C62B9354111}</UniqueIdentifier></Filter>
+    <Filter Include="tests"><UniqueIdentifier>{6E0F3880-06A8-4DB1-BA97-E7EE05FC4112}</UniqueIdentifier></Filter>
+    <Filter Include="Configuration"><UniqueIdentifier>{B4338B53-B7B7-471A-91A2-94441EA25113}</UniqueIdentifier></Filter>
+    <Filter Include="Dependencies"><UniqueIdentifier>{C2841917-0BE3-437B-A519-04088426D114}</UniqueIdentifier></Filter>
+    <Filter Include="Dependencies\onnxruntime-directml"><UniqueIdentifier>{5643D4B2-1D9B-454A-BD87-6BB610D9C115}</UniqueIdentifier></Filter>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClCompile Include="src\app\console_app.cpp"><Filter>src\app</Filter></ClCompile>
+    <ClCompile Include="src\app\console_dashboard.cpp"><Filter>src\app</Filter></ClCompile>
+    <ClCompile Include="src\app\main.cpp"><Filter>src\app</Filter></ClCompile>
+    <ClCompile Include="src\application\app_settings.cpp"><Filter>src\application</Filter></ClCompile>
+    <ClCompile Include="src\application\config_file.cpp"><Filter>src\application</Filter></ClCompile>
+    <ClCompile Include="src\application\runtime_controller.cpp"><Filter>src\application</Filter></ClCompile>
+    <ClCompile Include="src\core\capture\camera_capture.cpp"><Filter>src\core\capture</Filter></ClCompile>
+    <ClCompile Include="src\core\capture\screen_capture.cpp"><Filter>src\core\capture</Filter></ClCompile>
+    <ClCompile Include="src\core\capture\source_catalog.cpp"><Filter>src\core\capture</Filter></ClCompile>
+    <ClCompile Include="src\core\capture\window_capture.cpp"><Filter>src\core\capture</Filter></ClCompile>
+    <ClCompile Include="src\core\display\d3d_display.cpp"><Filter>src\core\display</Filter></ClCompile>
+    <ClCompile Include="src\core\display\preview_window.cpp"><Filter>src\core\display</Filter></ClCompile>
+    <ClCompile Include="src\core\hardware\cpu_monitor.cpp"><Filter>src\core\hardware</Filter></ClCompile>
+    <ClCompile Include="src\core\hardware\gpu_monitor.cpp"><Filter>src\core\hardware</Filter></ClCompile>
+    <ClCompile Include="src\core\hardware\memory_monitor.cpp"><Filter>src\core\hardware</Filter></ClCompile>
+    <ClCompile Include="src\core\hardware\system_info.cpp"><Filter>src\core\hardware</Filter></ClCompile>
+    <ClCompile Include="src\core\inference\amd_neural_runner.cpp"><Filter>src\core\inference</Filter></ClCompile>
+    <ClCompile Include="src\core\inference\class_metadata.cpp"><Filter>src\core\inference</Filter></ClCompile>
+    <ClCompile Include="src\core\inference\input_preprocessing.cpp"><Filter>src\core\inference</Filter></ClCompile>
+    <ClCompile Include="src\core\inference\onnxruntime_loader.cpp"><Filter>src\core\inference</Filter></ClCompile>
+    <ClCompile Include="src\core\inference\yolo_inference.cpp"><Filter>src\core\inference</Filter></ClCompile>
+    <ClCompile Include="src\core\overlay\overlay.cpp"><Filter>src\core\overlay</Filter></ClCompile>
+    <ClCompile Include="src\core\pipeline\fps_statistics.cpp"><Filter>src\core\pipeline</Filter></ClCompile>
+    <ClCompile Include="src\core\pipeline\workers.cpp"><Filter>src\core\pipeline</Filter></ClCompile>
+    <ClCompile Include="src\core\platform\utf8.cpp"><Filter>src\core\platform</Filter></ClCompile>
+    <ClCompile Include="src\core\timing.cpp"><Filter>src\core</Filter></ClCompile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClInclude Include="src\app\console_app.h"><Filter>src\app</Filter></ClInclude>
+    <ClInclude Include="src\app\console_dashboard.h"><Filter>src\app</Filter></ClInclude>
+    <ClInclude Include="src\application\app_settings.h"><Filter>src\application</Filter></ClInclude>
+    <ClInclude Include="src\application\config_file.h"><Filter>src\application</Filter></ClInclude>
+    <ClInclude Include="src\application\runtime_controller.h"><Filter>src\application</Filter></ClInclude>
+    <ClInclude Include="src\application\runtime_snapshot.h"><Filter>src\application</Filter></ClInclude>
+    <ClInclude Include="src\core\capture\camera_capture.h"><Filter>src\core\capture</Filter></ClInclude>
+    <ClInclude Include="src\core\capture\capture_source.h"><Filter>src\core\capture</Filter></ClInclude>
+    <ClInclude Include="src\core\capture\screen_capture.h"><Filter>src\core\capture</Filter></ClInclude>
+    <ClInclude Include="src\core\capture\source_catalog.h"><Filter>src\core\capture</Filter></ClInclude>
+    <ClInclude Include="src\core\capture\window_capture.h"><Filter>src\core\capture</Filter></ClInclude>
+    <ClInclude Include="src\core\display\d3d_display.h"><Filter>src\core\display</Filter></ClInclude>
+    <ClInclude Include="src\core\display\preview_window.h"><Filter>src\core\display</Filter></ClInclude>
+    <ClInclude Include="src\core\ema.h"><Filter>src\core</Filter></ClInclude>
+    <ClInclude Include="src\core\hardware\cpu_monitor.h"><Filter>src\core\hardware</Filter></ClInclude>
+    <ClInclude Include="src\core\hardware\gpu_monitor.h"><Filter>src\core\hardware</Filter></ClInclude>
+    <ClInclude Include="src\core\hardware\memory_monitor.h"><Filter>src\core\hardware</Filter></ClInclude>
+    <ClInclude Include="src\core\hardware\system_info.h"><Filter>src\core\hardware</Filter></ClInclude>
+    <ClInclude Include="src\core\inference\amd_neural_runner.h"><Filter>src\core\inference</Filter></ClInclude>
+    <ClInclude Include="src\core\inference\class_metadata.h"><Filter>src\core\inference</Filter></ClInclude>
+    <ClInclude Include="src\core\inference\input_preprocessing.h"><Filter>src\core\inference</Filter></ClInclude>
+    <ClInclude Include="src\core\inference\onnxruntime_loader.h"><Filter>src\core\inference</Filter></ClInclude>
+    <ClInclude Include="src\core\inference\yolo_inference.h"><Filter>src\core\inference</Filter></ClInclude>
+    <ClInclude Include="src\core\overlay\overlay.h"><Filter>src\core\overlay</Filter></ClInclude>
+    <ClInclude Include="src\core\pipeline\fps_statistics.h"><Filter>src\core\pipeline</Filter></ClInclude>
+    <ClInclude Include="src\core\pipeline\pipeline_state.h"><Filter>src\core\pipeline</Filter></ClInclude>
+    <ClInclude Include="src\core\pipeline\workers.h"><Filter>src\core\pipeline</Filter></ClInclude>
+    <ClInclude Include="src\core\platform\utf8.h"><Filter>src\core\platform</Filter></ClInclude>
+    <ClInclude Include="src\core\timing.h"><Filter>src\core</Filter></ClInclude>
+    <ClInclude Include="src\core\types.h"><Filter>src\core</Filter></ClInclude>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md"><Filter>Configuration</Filter></None>
+    <None Include="best4k.onnx"><Filter>Configuration</Filter></None>
+    <None Include="CMakeLists.txt"><Filter>Configuration</Filter></None>
+    <None Include="CMakePresets.json"><Filter>Configuration</Filter></None>
+    <None Include="config.txt"><Filter>Configuration</Filter></None>
+    <None Include="vcpkg.json"><Filter>Configuration</Filter></None>
+    <None Include="vcpkg-configuration.json"><Filter>Configuration</Filter></None>
+    <None Include="ports\onnxruntime-directml\portfile.cmake"><Filter>Dependencies\onnxruntime-directml</Filter></None>
+    <None Include="ports\onnxruntime-directml\vcpkg.json"><Filter>Dependencies\onnxruntime-directml</Filter></None>
+    <None Include="tests\config_tests.cpp"><Filter>tests</Filter></None>
+    <None Include="tests\fps_statistics_tests.cpp"><Filter>tests</Filter></None>
+    <None Include="tests\inference_benchmark.cpp"><Filter>tests</Filter></None>
+    <None Include="tests\input_preprocessing_tests.cpp"><Filter>tests</Filter></None>
+    <None Include="tests\onnxruntime_loader_tests.cpp"><Filter>tests</Filter></None>
+    <None Include="tests\source_catalog_tests.cpp"><Filter>tests</Filter></None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+model_path: "best4k.onnx"
+
+input_w: 736
+input_h: 736
+
+classes: full
+
+draw_fps: 120
+inference_fps: 120
+
+out_w: 1280
+out_h: 720

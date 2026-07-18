@@ -1,0 +1,8 @@
+{
+  "name": "onnxruntime-directml",
+  "version": "1.24.4",
+  "description": "ONNX Runtime with the DirectML execution provider",
+  "homepage": "https://onnxruntime.ai/",
+  "license": "MIT",
+  "supports": "windows & x64"
+}
